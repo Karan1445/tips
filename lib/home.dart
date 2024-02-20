@@ -6,8 +6,16 @@ import 'package:maketrip/screen_3.dart';
 import 'package:maketrip/screen_2.dart';
 
 
-class Home extends StatelessWidget{
+class Home extends StatefulWidget{
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+
   Widget build(BuildContext context){
     return Scaffold(
 
@@ -41,9 +49,9 @@ class Home extends StatelessWidget{
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      first_Scroll(context,"assets/images/screen2_new4.jpg","Rigi Mountains For Everyone,With\nSpecial Blue Sky","Lugano ,Switzerland"),
-                      first_Scroll(context,"assets/images/screen2_new8.jpg","Holiday For Family in Matterhorn\nmountain","Lugano ,Switzerland"),
-                      first_Scroll(context,"assets/images/screen2_new6.jpg","Holiday For Family in Matterhorn\nmountain","Lugano ,Switzerland")
+                      first_Scroll(context,"assets/images/screen2_new4.jpg","Rigi Mountains For Everyone,With\nSpecial Blue Sky","Medellin ,Colombia"),
+                      first_Scroll(context,"assets/images/screen2_new8.jpg","Holiday For Family in Matterhorn\nmountain","Fifi ,Thailand"),
+                      first_Scroll(context,"assets/images/screen2_new6.jpg","Holiday For Family in Matterhorn\nmountain","Kathmandu ,Nepal")
                     ],
                   ),
                 ),
@@ -66,7 +74,7 @@ class Home extends StatelessWidget{
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id:0)));
 
                           },
-                          child: Container(margin: EdgeInsets.only(top: 13,bottom: 13,left:0,right: 13),
+                          child: Container(margin: EdgeInsets.only(top: 13,bottom: 13,left:0,right: 0),
                             child:  const Column(
                               children: [
                                 Icon( IconData(0xe3a8, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 45,),
@@ -153,9 +161,9 @@ class Home extends StatelessWidget{
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      first_Scroll(context, "assets/images/home_1.jpg", "Make it Even in nigh\nMore beutiful", "Gujrat , India",wid_div: 2.1,flag: true),
-                      first_Scroll(context, "assets/images/home_2.jpg", "Make it Even in sun\nMore beutiful", "Gujrat , India",wid_div:2.1,flag:true,color_t: Colors.redAccent.shade400,txt: "70"),
-                      first_Scroll(context, "assets/images/home_4.jpg", "Make it Even in evening\nMore beutiful", "Gujrat , India",wid_div:2.1,flag:true,txt:"20")
+                      first_Scroll(context, "assets/images/home_1.jpg", "Make it Even in night with stars   \nMore beutiful", "Mauritania , Nu",wid_div: 2.1,flag: true),
+                      first_Scroll(context, "assets/images/home_2.jpg", "Make it Even in sun lights and     \nMore beutiful", "Ladakh , India",wid_div:2.1,flag:true,color_t: Colors.redAccent.shade400,txt: "70"),
+                      first_Scroll(context, "assets/images/home_4.jpg", "Make it Even in evening new things \nMore beutiful", "New jursy , Usa",wid_div:2.1,flag:true,txt:"20")
                     ],
                   ),
                 ),
@@ -191,7 +199,7 @@ class Home extends StatelessWidget{
 
           child: GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> Screen3(Path: img_path )));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Screen3(Path: img_path,t:f_text,loc:loc_text)));
             },
             child: Image.asset(img_path,
                 fit: BoxFit.cover,height: 280,width: MediaQuery.of(context).size.width/wid_div),
@@ -249,3 +257,4 @@ class Home extends StatelessWidget{
     );
   }
 }
+
