@@ -11,14 +11,124 @@ class Home extends StatefulWidget{
 
   @override
   State<Home> createState() => _HomeState();
+
 }
 
-class _HomeState extends State<Home> {
-
+class _HomeState extends State<Home> with TickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   Widget build(BuildContext context){
+    TabController _tabController=TabController(length: 3, vsync: this,);
     return Scaffold(
-
+          key: _key,
+         drawer: Drawer(
+           child: ListView(
+            children: [
+              DrawerHeader(curve: Easing.legacyDecelerate,decoration:BoxDecoration(color: Colors.purple.shade100),
+                  child:Container(margin: EdgeInsets.only(top:100),
+                    child: Text("Hello,Traveler",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,
+                      fontSize: 30,
+                    ),),
+                  ) ),
+              Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 0)));
+                  },
+                  child: Row(
+                   children: [
+                     Container(
+                       child:const Icon(IconData(0xe3a8, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                     ),
+                     Container(margin: EdgeInsets.only(left:15),
+                       child: const Text("City",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                   ],
+                  ),
+                ),
+              ),
+              Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 1)));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                          child:const Icon(IconData(0xe365, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                      ),
+                      Container(margin: EdgeInsets.only(left:15),
+                          child: const Text("Mountains",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                    ],
+                  ),
+                ),
+              ),
+              Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 2)));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                          child:const Icon(IconData(0xe0d6, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                      ),
+                      Container(margin: EdgeInsets.only(left:15),
+                          child: const Text("Beaches",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                    ],
+                  ),
+                ),
+              ),
+              Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 3)));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                          child:const Icon(IconData(0xe414, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                      ),
+                      Container(margin: EdgeInsets.only(left:15),
+                          child: const Text("Musumes",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                    ],
+                  ),
+                ),
+              ),
+              Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 4)));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                          child:const Icon(IconData(0xf7f1, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                      ),
+                      Container(margin: EdgeInsets.only(left:15),
+                          child: const Text("Tents",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                    ],
+                  ),
+                ),
+              ),
+              Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 5)));
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                          child:const Icon(IconData(0xf056b, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                      ),
+                      Container(margin: EdgeInsets.only(left:15),
+                          child: const Text("Snow",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+                   ),
+         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(margin: EdgeInsets.all(20),
@@ -26,24 +136,62 @@ class _HomeState extends State<Home> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(left: 10, right: 10,top:15,bottom: 20),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/8373748.png",
-                        width: 35,
-                      ),
-                      Expanded(child: Container()),
-                      const CircleAvatar(
-                        radius: 17,
-                        backgroundImage: AssetImage("assets/images/user_img.jpg"),
-                      )
-                    ],
+                  child: GestureDetector(
+                    onTap: (){
+                      _key.currentState!.openDrawer();
+
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/images/8373748.png",
+                          width: 35,
+                        ),
+                        Expanded(child: Container()),
+                        const CircleAvatar(
+                          radius: 17,
+                          backgroundImage: AssetImage("assets/images/user_img.jpg"),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Row(
                   children: [
                     Container(margin:EdgeInsets.only(left: 18),child: Text("Go With Me.",style: TextStyle(color:Colors.purple,fontSize: 29,fontWeight: FontWeight.w500),)),
                   ],
+                ),
+                Container(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: TabBar(
+                      dividerColor: Colors.white,
+                      controller: _tabController,
+                      isScrollable: true,
+                      tabAlignment: TabAlignment.start,
+                      labelPadding:  EdgeInsets.only(left:18,right:10),
+                      labelColor: Colors.purple.shade800,
+                      unselectedLabelColor: Colors.purple,
+                      indicator: CircleTabIndicator(color:Colors.purple,radius:4),
+                      tabs: [
+                        GestureDetector(onTap:(){_key.currentState!.openDrawer();},child: Tab(text: "Discover")),
+                        GestureDetector(onTap:(){_key.currentState!.openDrawer();},child: Tab(text: "Promo")),
+                        GestureDetector(onTap:(){_key.currentState!.openDrawer();},child: Tab(text: "Insight")),
+
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 0,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      Text(" "),
+                      Text(" "),
+                      Text(" ")
+                    ],
+                  ),
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -60,7 +208,7 @@ class _HomeState extends State<Home> {
                     children: [
                       const Text("Make Your Own Journy?",style: TextStyle(color: Colors.purple,fontSize: 18),),
                       Expanded(child: Container()),
-                      GestureDetector(onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id:1)));},child: const Text("View all",style: TextStyle(color: Colors.grey,fontSize:8),)),
+                      GestureDetector(onTap:(){_key.currentState!.openDrawer();},child: const Text("View all",style: TextStyle(color: Colors.grey,fontSize:8),)),
                     ],
                   ),
                 ),
@@ -70,8 +218,8 @@ class _HomeState extends State<Home> {
                     child:  Row(
                       children: [
                         GestureDetector(
-                          onTap:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id:0)));
+                          onTap:(){//Scaffold.of(context).openDrawer();
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id:0)));
 
                           },
                           child: Container(margin: EdgeInsets.only(top: 13,bottom: 13,left:0,right: 0),
@@ -199,6 +347,7 @@ class _HomeState extends State<Home> {
 
           child: GestureDetector(
             onTap: (){
+
               Navigator.push(context, MaterialPageRoute(builder: (context)=> Screen3(Path: img_path,t:f_text,loc:loc_text)));
             },
             child: Image.asset(img_path,
@@ -257,4 +406,29 @@ class _HomeState extends State<Home> {
     );
   }
 }
+class CircleTabIndicator extends Decoration{
+  final Color color;
+  double radius;
 
+  CircleTabIndicator({required this.color,required this.radius});
+
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]){
+    return _CirclePainter(color:Colors.purple,radius:radius);
+  }
+}
+
+class _CirclePainter extends BoxPainter{
+  final double radius;
+  late Color color;
+
+  _CirclePainter({required this.radius,required this.color});
+
+  void paint(Canvas canvas,Offset offset,ImageConfiguration cfg){
+    late Paint _paint;
+    _paint=Paint()..color=color;
+    _paint=_paint ..isAntiAlias=true;
+
+    final Offset circleOffset=offset+Offset(cfg.size!.width/2,cfg.size!.height-radius);canvas.drawCircle(circleOffset, radius, _paint);
+  }
+}

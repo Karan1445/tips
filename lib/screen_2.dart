@@ -12,7 +12,7 @@ class Screen2 extends StatefulWidget {
   State<Screen2> createState() => _Screen2State(id);
 }
 class _Screen2State extends State<Screen2>{
-
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   final List img_list=[
     Imgs(img:"assets/images/screen2_new4.jpg",t:"Explore new advanture with us \nin dark night",locs:"Navda,usa"),
     Imgs(img: "assets/images/screen2_new8.jpg",t:"Beautiful moutains with cold and \nchill waether",locs:"Fiji,Japan"),
@@ -63,6 +63,7 @@ class _Screen2State extends State<Screen2>{
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
+        surfaceTintColor:Colors.transparent,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         actions: const [],
@@ -70,14 +71,24 @@ class _Screen2State extends State<Screen2>{
           margin: const EdgeInsets.only(left: 10, right: 10),
           child: Row(
             children: [
-              Image.asset(
-                "assets/images/8373748.png",
-                width: 35,
+              GestureDetector(
+                onTap: (){
+                  _key.currentState!.openDrawer();
+                },
+                child: Image.asset(
+                  "assets/images/8373748.png",
+                  width: 35,
+                ),
               ),
               Expanded(child: Container()),
-              const CircleAvatar(
-                radius: 17,
-                backgroundImage: AssetImage("assets/images/user_img.jpg"),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const Home()));
+                },
+                child: const CircleAvatar(
+                  radius: 17,
+                  backgroundImage: AssetImage("assets/images/user_img.jpg"),
+                ),
               )
             ],
           ),
@@ -133,6 +144,115 @@ class _Screen2State extends State<Screen2>{
           ),
           bottomButton(context),
         ],
+      ),
+      key:_key,
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(curve: Easing.legacyDecelerate,decoration:BoxDecoration(color: Colors.purple.shade100),
+                child:Container(margin: EdgeInsets.only(top:100),
+                  child: Text("Hello,Traveler",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,
+                    fontSize: 30,
+                  ),),
+                ) ),
+            Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 0)));
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        child:const Icon(IconData(0xe3a8, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                    ),
+                    Container(margin: EdgeInsets.only(left:15),
+                        child: const Text("City",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                  ],
+                ),
+              ),
+            ),
+            Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 1)));
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        child:const Icon(IconData(0xe365, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                    ),
+                    Container(margin: EdgeInsets.only(left:15),
+                        child: const Text("Mountains",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                  ],
+                ),
+              ),
+            ),
+            Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 2)));
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        child:const Icon(IconData(0xe0d6, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                    ),
+                    Container(margin: EdgeInsets.only(left:15),
+                        child: const Text("Beaches",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                  ],
+                ),
+              ),
+            ),
+            Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 3)));
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        child:const Icon(IconData(0xe414, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                    ),
+                    Container(margin: EdgeInsets.only(left:15),
+                        child: const Text("Musumes",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                  ],
+                ),
+              ),
+            ),
+            Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 4)));
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        child:const Icon(IconData(0xf7f1, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                    ),
+                    Container(margin: EdgeInsets.only(left:15),
+                        child: const Text("Tents",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                  ],
+                ),
+              ),
+            ),
+            Container(margin: EdgeInsets.only(top:10,bottom: 10,left: 15),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2(id: 5)));
+                },
+                child: Row(
+                  children: [
+                    Container(
+                        child:const Icon(IconData(0xf056b, fontFamily: 'MaterialIcons'),color: Colors.purple,size: 40,)
+                    ),
+                    Container(margin: EdgeInsets.only(left:15),
+                        child: const Text("Snow",style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.w500,),)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -195,9 +315,9 @@ class _Screen2State extends State<Screen2>{
                         style:TextStyle(color: Colors.white70,fontSize: 12),),
                     ],
                   ),
-                  Row(
+                   Row(
                     children: [
-                      Icon(IconData(0xe3ab, fontFamily: 'MaterialIcons'),
+                     const Icon(IconData(0xe3ab, fontFamily: 'MaterialIcons'),
                           color: Colors.redAccent,size: 11),
                       Text(
                        locs,
@@ -215,6 +335,7 @@ class _Screen2State extends State<Screen2>{
       ),
     );
   }
+
 }
 class Imgs{
   String img;
